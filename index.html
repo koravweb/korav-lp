@@ -1,250 +1,239 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KORAV | VIP ACCESS PROTOCOL</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&family=Montserrat:wght@900&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --black: #050505;
-            --white: #ffffff;
-            --gray: #111111;
-            --accent: #555555;
-            --text-muted: #a0a0a0;
-            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--black);
-            color: var(--white);
-            overflow-x: hidden;
-            line-height: 1.6;
-        }
-
-        .bg-overlay {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(circle at 50% 50%, #1a1a1a 0%, #050505 60%);
-            z-index: -1;
-        }
-
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 25px; }
-
-        header { padding: 40px 0; text-align: center; }
-        .logo {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 2.5rem;
-            letter-spacing: 8px;
-            font-weight: 900;
-            text-transform: uppercase;
-            margin-bottom: 10px;
-        }
-        .badge {
-            font-size: 0.7rem;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            color: var(--text-muted);
-            border: 1px solid var(--accent);
-            padding: 4px 12px;
-            display: inline-block;
-        }
-
-        .hero { display: flex; flex-direction: column; align-items: center; text-align: center; padding: 80px 0 120px; }
-        .hero-title {
-            font-family: 'Montserrat', sans-serif;
-            font-size: clamp(2.5rem, 8vw, 5.5rem);
-            line-height: 0.9;
-            text-transform: uppercase;
-            margin-bottom: 30px;
-            letter-spacing: -2px;
-        }
-        .hero-subtitle {
-            font-size: clamp(1rem, 2.5vw, 1.3rem);
-            color: var(--text-muted);
-            max-width: 700px;
-            margin-bottom: 50px;
-            font-weight: 300;
-        }
-
-        /* DESIGN ORIGINAL DO FORMULÁRIO */
-        .form-container {
-            width: 100%;
-            max-width: 450px;
-            background: #000; /* Fundo preto como na imagem */
-            border: 1px solid #333;
-            padding: 40px;
-            transition: var(--transition);
-        }
-
-        .form-group { margin-bottom: 25px; text-align: left; }
-        
-        label {
-            display: block;
-            font-size: 0.8rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            margin-bottom: 8px;
-            color: #fff; /* Label branca como na imagem */
-        }
-
-        input {
-            width: 100%;
-            padding: 15px;
-            background: #fff; /* Input branco como na imagem */
-            border: none;
-            color: #000; /* Texto preto dentro do input */
-            font-family: 'Inter', sans-serif;
-            font-size: 1rem;
-            outline: none;
-        }
-
-        .btn-submit {
-            width: 100%;
-            padding: 18px;
-            background: #fff;
-            color: #000;
-            border: none;
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 900;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .btn-submit:hover { background: #ccc; }
-
-        /* Mensagem de Sucesso */
-        #success-ui {
-            display: none;
-            text-align: center;
-            padding: 40px;
-        }
-        .success-icon { font-size: 3rem; margin-bottom: 20px; }
-
-        .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; padding: 100px 0; }
-        .feature-card { text-align: center; }
-        .feature-card h3 { font-family: 'Montserrat', sans-serif; font-size: 1rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 15px; }
-        .feature-card p { color: var(--text-muted); font-size: 0.9rem; }
-
-        footer { padding: 60px 0; text-align: center; color: #444; font-size: 0.8rem; letter-spacing: 1px; text-transform: uppercase; }
-
-        @media (max-width: 768px) {
-            .hero-title { font-size: 3.5rem; }
-            .form-container { padding: 25px; border: none; background: transparent; }
-        }
-    </style>
-</head>
-<body>
-
-    <div class="bg-overlay"></div>
-
-    <header>
-        <div class="container">
-            <div class="logo">KORAV</div>
-            <div class="badge">Protocol 01: VIP Access</div>
-        </div>
-    </header>
-
-    <main class="container">
-        <section class="hero">
-            <h1 class="hero-title">URBAN<br>ARMOR.</h1>
-            <p class="hero-subtitle">
-                O próximo nível do streetwear está sendo forjado. 
-                Entre na lista VIP para acesso antecipado e um cupom exclusivo no drop oficial.
-            </p>
-
-            <div class="form-container" id="form-wrapper">
-                <form id="vip-form">
-                    <div class="form-group">
-                        <label>Nome</label>
-                        <input type="text" id="name" name="name" placeholder="Ex: Arthur Silva" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Whatsapp</label>
-                        <input type="tel" id="whatsapp" name="whatsapp" placeholder="(00) 00000-0000" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Email</label>
-                        <input type="email" id="email" name="email" placeholder="seu@email.com" required>
-                    </div>
-                    <button type="submit" class="btn-submit">QUERO ACESSO VIP &#8594;</button>
-                </form>
-            </div>
-
-            <div id="success-ui">
-                <div class="success-icon">🛡️</div>
-                <h2 style="margin-bottom:10px;">PROTOCOLO ATIVADO</h2>
-                <p style="color: var(--text-muted);">Você agora é um Cidadão VIP. Verifique seu e-mail e WhatsApp em breve.</p>
-            </div>
-        </section>
-
-        <section class="features">
-            <div class="feature-card">
-                <h3>250GSM</h3>
-                <p>Malha Heavyweight de alta densidade para máxima durabilidade.</p>
-            </div>
-            <div class="feature-card">
-                <h3>BOXY FIT</h3>
-                <p>Modelagem moderna inspirada na estética urbana coreana.</p>
-            </div>
-            <div class="feature-card">
-                <h3>LIMITED</h3>
-                <p>Drops exclusivos e limitados. Quem está na lista chega primeiro.</p>
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <div class="container">
-            &copy; 2026 KORAV - ALL RIGHTS RESERVED.
-        </div>
-    </footer>
-
-    <script>
-        document.getElementById('vip-form').addEventListener('submit', async function(e) {
-            e.preventDefault();
-            
-            const btn = this.querySelector('.btn-submit');
-            btn.innerText = 'PROCESSANDO...';
-            btn.disabled = true;
-
-            // PEGAR OS DADOS
-            const data = {
-                name: document.getElementById('name').value,
-                whatsapp: document.getElementById('whatsapp').value,
-                email: document.getElementById('email').value
-            };
-
-            try {
-                // ENVIAR PARA O TALLY VIA WEBHOOK
-                // IMPORTÃOTE: Substitua a URL abaixo pela sua Webhook URL do Tally
-                const webhookUrl = 'SUBSTITUA_AQUI_A_SUA_WEBHOOK_URL';
-
-                await fetch(webhookUrl, {
-                    method: 'POST',
-                    mode: 'no-cors', // Necessário para evitar erros de CORS em Webhooks simples
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(data)
-                });
-
-                // MOSTRAR SUCESSO
-                document.getElementById('form-wrapper').style.display = 'none';
-                document.getElementById('success-ui').style.display = 'block';
-
-            } catch (error) {
-                console.error('Erro ao enviar:', error);
-                alert('Erro ao processar. Tente novamente.');
-                btn.innerText = 'TENTAR NOVAMENTE';
-                btn.disabled = false;
-            }
-        });
-    </script>
-</body>
-</html>
+     1 <!DOCTYPE html>
+     2 <html lang="pt-br">
+     3 <head>
+     4     <meta charset="UTF-8">
+     5     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     6     <title>KORAV | VIP ACCESS PROTOCOL</title>
+     7     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Montserrat:wght@900&display=swap" rel="stylesheet">
+     8     <style>
+     9         /* RESET BÁSICO PARA EVITAR ERROS DE LAYOUT */
+    10         * { margin: 0; padding: 0; box-sizing: border-box; }
+    11
+    12         body {
+    13             font-family: 'Inter', sans-serif;
+    14             background-color: #050505;
+    15             color: #ffffff;
+    16             line-height: 1.6;
+    17         }
+    18
+    19         /* FUNDO COM GRADIENTE */
+    20         .bg-overlay {
+    21             position: fixed;
+    22             top: 0; left: 0; width: 100%; height: 100%;
+    23             background: radial-gradient(circle at 50% 50%, #1a1a1a 0%, #050505 60%);
+    24             z-index: -1;
+    25         }
+    26
+    27         .container { max-width: 1200px; margin: 0 auto; padding: 0 25px; }
+    28
+    29         /* HEADER */
+    30         header { padding: 40px 0; text-align: center; }
+    31         .logo {
+    32             font-family: 'Montserrat', sans-serif;
+    33             font-size: 2.5rem;
+    34             letter-spacing: 8px;
+    35             font-weight: 900;
+    36             text-transform: uppercase;
+    37             margin-bottom: 10px;
+    38         }
+    39         .badge {
+    40             font-size: 0.7rem;
+    41             letter-spacing: 3px;
+    42             text-transform: uppercase;
+    43             color: #a0a0a0;
+    44             border: 1px solid #555;
+    45             padding: 4px 12px;
+    46             display: inline-block;
+    47         }
+    48
+    49         /* HERO SECTION */
+    50         .hero { display: flex; flex-direction: column; align-items: center; text-align: center; padding: 80px 0 120px; }
+    51         .hero-title {
+    52             font-family: 'Montserrat', sans-serif;
+    53             font-size: clamp(2.5rem, 8vw, 5.5rem);
+    54             line-height: 0.9;
+    55             text-transform: uppercase;
+    56             margin-bottom: 30px;
+    57             letter-spacing: -2px;
+    58         }
+    59         .hero-subtitle {
+    60             font-size: clamp(1rem, 2.5vw, 1.3rem);
+    61             color: #a0a0a0;
+    62             max-width: 700px;
+    63             margin-bottom: 50px;
+    64             font-weight: 300;
+    65         }
+    66
+    67         /* FORMULÁRIO - DESIGN EXATAMENTE COMO NA SUA IMAGEM */
+    68         .form-container {
+    69             width: 100%;
+    70             max-width: 450px;
+    71             background-color: #000000; /* Fundo preto como no print */
+    72             border: 1px solid #333; /* Borda cinza escura */
+    73             padding: 40px;
+    74         }
+    75
+    76         .form-group { margin-bottom: 25px; text-align: left; }
+    77
+    78         label {
+    79             display: block;
+    80             font-size: 0.75rem;
+    81             font-weight: 700;
+    82             text-transform: uppercase;
+    83             margin-bottom: 8px;
+    84             color: #ffffff; /* Label branca como no print */
+    85         }
+    86
+    87         input {
+    88             width: 100%;
+    89             padding: 15px;
+    90             background-color: #ffffff; /* Input branco como no print */
+    91             border: none;
+    92             color: #000000; /* Texto preto como no print */
+    93             font-family: 'Inter', sans-serif;
+    94             font-size: 1rem;
+    95             outline: none;
+    96         }
+    97
+    98         .btn-submit {
+    99             width: 100%;
+   100             padding: 18px;
+   101             background-color: #ffffff;
+   102             color: #000000;
+   103             border: none;
+   104             font-family: 'Montserrat', sans-serif;
+   105             font-weight: 900;
+   106             text-transform: uppercase;
+   107             letter-spacing: 2px;
+   108             cursor: pointer;
+   109             transition: 0.3s;
+   110         }
+   111
+   112         .btn-submit:hover { background-color: #cccccc; }
+   113
+   114         /* MENSAGEM DE SUCESSO */
+   115         #success-ui {
+   116             display: none;
+   117             text-align: center;
+   118             padding: 40px;
+   119         }
+   120         .success-icon { font-size: 3rem; margin-bottom: 20px; }
+   121
+   122         /* FEATURES */
+   123         .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; padding: 100px 0; }
+   124         .feature-card { text-align: center; }
+   125         .feature-card h3 { font-family: 'Montserrat', sans-serif; font-size: 1rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 15px; }
+   126         .feature-card p { color: #a0a0a0; font-size: 0.9rem; }
+   127
+   128         footer { padding: 60px 0; text-align: center; color: #444; font-size: 0.8rem; letter-spacing: 1px; text-transform: uppercase; }
+   129
+   130         @media (max-width: 768px) {
+   131             .hero-title { font-size: 3.5rem; }
+   132             .form-container { padding: 25px; border: none; background: transparent; }
+   133         }
+   134     </style>
+   135 </head>
+   136 <body>
+   137
+   138     <div class="bg-overlay"></div>
+   139
+   140     <header>
+   141         <div class="container">
+   142             <div class="logo">KORAV</div>
+   143             <div class="badge">Protocol 01: VIP Access</div>
+   144         </div>
+   145     </header>
+   146
+   147     <main class="container">
+   148         <section class="hero">
+   149             <h1 class="hero-title">URBAN<br>ARMOR.</h1>
+   150             <p class="hero-subtitle">
+   151                 O próximo nível do streetwear está sendo forjado.
+   152                 Entre na lista VIP para acesso antecipado e um cupom exclusivo no drop oficial.
+   153             </p>
+   154
+   155             <div class="form-container" id="form-wrapper">
+   156                 <form id="vip-form">
+   157                     <div class="form-group">
+   158                         <label>Nome</label>
+   159                         <input type="text" id="name" name="name" placeholder="Ex: Arthur Silva" required>
+   160                     </div>
+   161                     <div class="form-group">
+   162                         <label>Whatsapp</label>
+   163                         <input type="tel" id="whatsapp" name="whatsapp" placeholder="(00) 00000-0000" required>
+   164                     </div>
+   165                     <div class="form-group">
+   166                         <label>Email</label>
+   167                         <input type="email" id="email" name="email" placeholder="seu@email.com" required>
+   168                     </div>
+   169                     <button type="submit" class="btn-submit">QUERO ACESSO VIP →</button>
+   170                 </form>
+   171             </div>
+   172
+   173             <div id="success-ui">
+   174                 <div class="success-icon">🛡️</div>
+   175                 <h2 style="margin-bottom:10px;">PROTOCOLO ATIVADO</h2>
+   176                 <p style="color: #a0a0a0;">Você agora é um Cidadão VIP. Verifique seu e-mail e WhatsApp em breve.</p>
+   177             </div>
+   178         </section>
+   179
+   180         <section class="features">
+   181             <div class="feature-card">
+   182                 <h3>250GSM</h3>
+   183                 <p>Malha Heavyweight de alta densidade para máxima durabilidade.</p>
+   184             </div>
+   185             <div class="feature-card">
+   186                 <h3>BOXY FIT</h3>
+   187                 <p>Modelagem moderna inspirada na estética urbana coreana.</p>
+   188             </div>
+   189             <div class="feature-card">
+   190                 <h3>LIMITED</h3>
+   191                 <p>Drops exclusivos e limitados. Quem está na lista chega primeiro.</p>
+   192             </div>
+   193         </section>
+   194     </main>
+   195
+   196     <footer>
+   197         <div class="container">
+   198             &copy; 2026 KORAV - ALL RIGHTS RESERVED.
+   199         </div>
+   200     </footer>
+   201
+   202     <script>
+   203         document.getElementById('vip-form').addEventListener('submit', async function(e) {
+   204             e.preventDefault();
+   205
+   206             const btn = this.querySelector('.btn-submit');
+   207             btn.innerText = 'PROCESSANDO...';
+   208             btn.disabled = true;
+   209
+   210             const data = {
+   211                 name: document.getElementById('name').value,
+   212                 whatsapp: document.getElementById('whatsapp').value,
+   213                 email: document.getElementById('email').value
+   214             };
+   215
+   216             try {
+   217                 // Substitua pela sua URL do Webhook do Tally
+   218                 const webhookUrl = 'SUBSTITUA_AQUI_A_SUA_WEBHOOK_URL';
+   219
+   220                 await fetch(webhookUrl, {
+   221                     method: 'POST',
+   222                     mode: 'no-cors',
+   223                     headers: { 'Content-Type': 'application/json' },
+   224                     body: JSON.stringify(data)
+   225                 });
+   226
+   227                 document.getElementById('form-wrapper').style.display = 'none';
+   228                 document.getElementById('success-ui').style.display = 'block';
+   229
+   230             } catch (error) {
+   231                 console.error('Erro:', error);
+   232                 alert('Erro ao processar. Tente novamente.');
+   233                 btn.innerText = 'TENTAR NOVAMENTE';
+   234                 btn.disabled = false;
+   235             }
+   236         });
+   237     </script>
+   238 </body>
+   239 </html>
