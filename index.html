@@ -1,326 +1,220 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KORAV | VIP ACCESS PROTOCOL</title>
-    <!-- Google Fonts: Inter para corpo e Montserrat para títulos -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&family=Montserrat:wght@900&display=swap"
-        rel="stylesheet">
-    <style>
-        :root {
-            --black: #050505;
-            --white: #ffffff;
-            --gray: #111111;
-            --accent: #555555;
-            --text-muted: #a0a0a0;
-            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--black);
-            color: var(--white);
-            overflow-x: hidden;
-            line-height: 1.6;
-        }
-
-        /* Background Effect */
-        .bg-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at 50% 50%, #1a1a1a 0%, #050505 60%);
-            z-index: -1;
-        }
-
-        /* Layout */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 25px;
-        }
-
-        header {
-            padding: 40px 0;
-            text-align: center;
-        }
-
-        .logo {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 2.5rem;
-            letter-spacing: 8px;
-            font-weight: 900;
-            text-transform: uppercase;
-            margin-bottom: 10px;
-        }
-
-        .badge {
-            font-size: 0.7rem;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            color: var(--text-muted);
-            border: 1px solid var(--accent);
-            padding: 4px 12px;
-            display: inline-block;
-        }
-
-        /* Hero Section */
-        .hero {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            padding: 80px 0 120px;
-        }
-
-        .hero-title {
-            font-family: 'Montserrat', sans-serif;
-            font-size: clamp(2.5rem, 8vw, 5.5rem);
-            line-height: 0.9;
-            text-transform: uppercase;
-            margin-bottom: 30px;
-            letter-spacing: -2px;
-        }
-
-        .hero-subtitle {
-            font-size: clamp(1rem, 2.5vw, 1.3rem);
-            color: var(--text-muted);
-            max-width: 700px;
-            margin-bottom: 50px;
-            font-weight: 300;
-        }
-
-        /* Form Section */
-        .form-container {
-            width: 100%;
-            max-width: 450px;
-            background: var(--gray);
-            padding: 40px;
-            border: 1px solid #333;
-            position: relative;
-            transition: var(--transition);
-        }
-
-        .form-container:hover {
-            border-color: #555;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-            text-align: left;
-        }
-
-        label {
-            display: block;
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 8px;
-            color: var(--text-muted);
-        }
-
-        input {
-            width: 100%;
-            padding: 15px;
-            background: var(--black);
-            border: 1px solid #333;
-            color: var(--white);
-            font-family: 'Inter', sans-serif;
-            font-size: 1rem;
-            outline: none;
-            transition: var(--transition);
-        }
-
-        input:focus {
-            border-color: var(--white);
-        }
-
-        .btn-submit {
-            width: 100%;
-            padding: 18px;
-            background: var(--white);
-            color: var(--black);
-            border: none;
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 900;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            cursor: pointer;
-            margin-top: 10px;
-            transition: var(--transition);
-        }
-
-        .btn-submit:hover {
-            background: #ccc;
-            transform: scale(1.02);
-        }
-
-        /* Success Message */
-        #success-message {
-            display: none;
-            text-align: center;
-            animation: fadeIn 0.5s ease forwards;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(10px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .success-icon {
-            font-size: 3rem;
-            margin-bottom: 20px;
-        }
-
-        /* Features Section */
-        .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            padding: 100px 0;
-            border-top: 1px solid #222;
-        }
-
-        .feature-card {
-            text-align: center;
-        }
-
-        .feature-card h3 {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1.1rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 15px;
-        }
-
-        .feature-card p {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-        }
-
-        /* Footer */
-        footer {
-            padding: 60px 0;
-            text-align: center;
-            border-top: 1px solid #222;
-            color: #444;
-            font-size: 0.8rem;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .container {
-                padding: 40px 20px;
-            }
-
-            .hero-title {
-                font-size: 3.5rem;
-            }
-
-            .form-container {
-                padding: 30px 20px;
-            }
-        }
-    </style>
-</head>
-
-<body>
-
-    <div class="bg-overlay"></div>
-
-    <header>
-        <div class="container">
-            <div class="logo">KORAV</div>
-            <div class="badge">Protocol 01: VIP Access</div>
-        </div>
-    </header>
-
-    <main class="container">
-        <section class="hero">
-            <h1 class="hero-title">ARMADURA<br>URBANA</h1>
-            <p class="hero-subtitle">
-                O próximo nível do streetwear está sendo forjado.
-                Entre na lista VIP para acesso antecipado e um cupom exclusivo no drop oficial.
-            </p>
-
-            <!-- FORMULÁRIO -->
-            <iframe
-                data-tally-src="https://tally.so/embed/PdggJB?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
-                loading="lazy" width="100%" height="200" frameborder="0" marginheight="0" marginwidth="0"
-                title="Lista Vip Korav"></iframe>
-            <script>var d = document, w = "https://tally.so/widgets/embed.js", v = function () { "undefined" != typeof Tally ? Tally.loadEmbeds() : d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function (e) { e.src = e.dataset.tallySrc })) }; if ("undefined" != typeof Tally) v(); else if (d.querySelector('script[src="' + w + '"]') == null) { var s = d.createElement("script"); s.src = w, s.onload = v, s.onerror = v, d.body.appendChild(s); }</script>
-
-            <!-- MENSAGEM DE SUCESSO (OCULTA) -->
-            <div id="success-message">
-                <div class="success-icon">🛡️</div>
-                <h2 style="border:none; background:none; padding:0; margin-bottom:10px;">PROTOCOLO ATIVADO</h2>
-                <p style="color: var(--text-muted);">Você agora é um Cidadão VIP. Verifique seu e-mail e WhatsApp em
-                    breve.</p>
-            </div>
-        </section>
-
-        <section class="features">
-            <div class="feature-card">
-                <h3>250GSM</h3>
-                <p>Malha Heavyweight de alta densidade para máxima durabilidade e caimento estruturado.</p>
-            </div>
-            <div class="feature-card">
-                <h3>BOXY FIT</h3>
-                <p>Modelagem moderna inspirada na estética urbana coreana.</p>
-            </div>
-            <div class="feature-card">
-                <h3>LIMITED</h3>
-                <p>Drops exclusivos e limitados. Quem está na lista chega primeiro.</p>
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <div class="container">
-            &copy; 2026 KORAV - ALL RIGHTS RESERVED.
-        </div>
-    </footer>
-
-    <script>
-        document.getElementById('vip-form').addEventListener('submit', function (e) {
-            e.preventDefault();
-
-            const submitBtn = this.querySelector('.btn-submit');
-            submitBtn.innerText = 'PROCESSANDO...';
-            submitBtn.disabled = true;
-
-            // Simulação de envio
-            setTimeout(() => {
-                document.getElementById('form-wrapper').style.display = 'none';
-                document.getElementById('success-message').style.display = 'block';
-
-                console.log("LEAD CAPTURADO:", {
-                    name: document.getElementById('name').value,
-                    email: document.getElementById('email').value,
-                    whatsapp: document.getElementById('whatsapp').value
-                });
-            }, 1500);
-        });
-    </script>
-</body>
-
-</html>
+     1 <!DOCTYPE html>
+     2 <html lang="pt-br">
+     3 <head>
+     4     <meta charset="UTF-8">
+     5     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     6     <title>KORAV | VIP ACCESS PROTOCOL</title>
+     7     <!-- Google Fonts: Inter para corpo e Montserrat para títulos -->
+     8     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&family=Montserrat:wght@900&display=swap" rel="stylesheet">
+     9     <style>
+    10         :root {
+    11             --black: #050505;
+    12             --white: #ffffff;
+    13             --gray: #111111;
+    14             --accent: #555555;
+    15             --text-muted: #a0a0a0;
+    16             --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    17         }
+    18
+    19         * {
+    20             margin: 0;
+    21             padding: 0;
+    22             box-sizing: border-box;
+    23         }
+    24
+    25         body {
+    26             font-family: 'Inter', sans-serif;
+    27             background-color: var(--black);
+    28             color: var(--white);
+    29             overflow-x: hidden;
+    30             line-height: 1.6;
+    31         }
+    32
+    33         /* Background Effect */
+    34         .bg-overlay {
+    35             position: fixed;
+    36             top: 0;
+    37             left: 0;
+    38             width: 100%;
+    39             height: 100%;
+    40             background: radial-gradient(circle at 50% 50%, #1a1a1a 0%, #050505 60%);
+    41             z-index: -1;
+    42         }
+    43
+    44         /* Layout */
+    45         .container {
+    46             max-width: 1200px;
+    47             margin: 0 auto;
+    48             padding: 0 25px;
+    49         }
+    50
+    51         header {
+    52             padding: 40px 0;
+    53             text-align: center;
+    54         }
+    55
+    56         .logo {
+    57             font-family: 'Montserrat', sans-serif;
+    58             font-size: 2.5rem;
+    59             letter-spacing: 8px;
+    60             font-weight: 900;
+    61             text-transform: uppercase;
+    62             margin-bottom: 10px;
+    63         }
+    64
+    65         .badge {
+    66             font-size: 0.7rem;
+    67             letter-spacing: 3px;
+    68             text-transform: uppercase;
+    69             color: var(--text-muted);
+    70             border: 1px solid var(--accent);
+    71             padding: 4px 12px;
+    72             display: inline-block;
+    73         }
+    74
+    75         /* Hero Section */
+    76         .hero {
+    77             display: flex;
+    78             flex-direction: column;
+    79             align-items: center;
+    80             text-align: center;
+    81             padding: 80px 0 120px;
+    82         }
+    83
+    84         .hero-title {
+    85             font-family: 'Montserrat', sans-serif;
+    86             font-size: clamp(2.5rem, 8vw, 5.5rem);
+    87             line-height: 0.9;
+    88             text-transform: uppercase;
+    89             margin-bottom: 30px;
+    90             letter-spacing: -2px;
+    91         }
+    92
+    93         .hero-subtitle {
+    94             font-size: clamp(1rem, 2.5vw, 1.3rem);
+    95             color: var(--text-muted);
+    96             max-width: 700px;
+    97             margin-bottom: 50px;
+    98             font-weight: 300;
+    99         }
+   100
+   101         /* Form Section - Ajustado para o Tally */
+   102         .form-container {
+   103             width: 100%;
+   104             max-width: 500px; /* Aumentado levemente para melhor leitura */
+   105             background: var(--gray);
+   106             border: 1px solid #333;
+   107             transition: var(--transition);
+   108             min-height: 400px; /* Garante espaço para o iframe */
+   109         }
+   110
+   111         .form-container:hover {
+   112             border-color: #555;
+   113         }
+   114
+   115         /* Features Section */
+   116         .features {
+   117             display: grid;
+   118             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+   119             gap: 40px;
+   120             padding: 100px 0;
+   121         }
+   122
+   123         .feature-card {
+   124             text-align: center;
+   125         }
+   126
+   127         .feature-card h3 {
+   128             font-family: 'Montserrat', sans-serif;
+   129             font-size: 1.1rem;
+   130             text-transform: uppercase;
+   131             letter-spacing: 2px;
+   132             margin-bottom: 15px;
+   133         }
+   134
+   135         .feature-card p {
+   136             color: var(--text-muted);
+   137             font-size: 0.9rem;
+   138         }
+   139
+   140         /* Footer */
+   141         footer {
+   142             padding: 60px 0;
+   143             text-align: center;
+   144             color: #444;
+   145             font-size: 0.8rem;
+   146             letter-spacing: 1px;
+   147             text-transform: uppercase;
+   148         }
+   149
+   150         /* Responsive */
+   151         @media (max-width: 768px) {
+   152             .container { padding: 40px 20px; }
+   153             .hero-title { font-size: 3.5rem; }
+   154             .form-container { padding: 0; border: none; background: transparent; }
+   155         }
+   156     </style>
+   157 </head>
+   158 <body>
+   159
+   160     <div class="bg-overlay"></div>
+   161
+   162     <header>
+   163         <div class="container">
+   164             <div class="logo">KORAV</div>
+   165             <div class="badge">Protocol 01: VIP Access</div>
+   166         </div>
+   167     </header>
+   168
+   169     <main class="container">
+   170         <section class="hero">
+   171             <h1 class="hero-title">URBAN<br>ARMOR.</h1>
+   172             <p class="hero-subtitle">
+   173                 O próximo nível do streetwear está sendo forjado.
+   174                 Entre na lista VIP para acesso antecipado e um cupom exclusivo no drop oficial.
+   175             </p>
+   176
+   177             <!-- FORMULÁRIO TALLY INTEGRADO -->
+   178             <div class="form-container">
+   179                 <iframe
+   180                     data-tally-src="https://tally.so/embed/PdggJB?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
+   181                     loading="lazy"
+   182                     width="100%"
+   183                     height="450"
+   184                     frameborder="0"
+   185                     marginheight="0"
+   186                     marginwidth="0"
+   187                     title="Lista Vip Korav">
+   188                 </iframe>
+   189                 <script>
+   190                     var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof
+       Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function(e){e.src=e.dataset.tallySrc}))};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"]')==null){var
+       s=d.createElement("script");s.src=w,s.onload=v,s.onerror=v,d.body.appendChild(s);}
+   191                 </script>
+   192             </div>
+   193         </section>
+   194
+   195         <section class="features">
+   196             <div class="feature-card">
+   197                 <h3>250GSM</h3>
+   198                 <p>Malha Heavyweight de alta densidade para máxima durabilidade e caimento estruturado.</p>
+   199             </div>
+   200             <div class="feature-card">
+   201                 <h3>BOXY FIT</h3>
+   202                 <p>Modelagem moderna inspirada na estética urbana coreana.</p>
+   203             </div>
+   204             <div class="feature-card">
+   205                 <h3>LIMITED</h3>
+   206                 <p>Drops exclusivos e limitados. Quem está na lista chega primeiro.</p>
+   207             </div>
+   208         </section>
+   209     </main>
+   210
+   211     <footer>
+   212         <div class="container">
+   213             &copy; 2026 KORAV - ALL RIGHTS RESERVED.
+   214         </div>
+   215     </footer>
+   216
+   217 </body>
+   218 </html>
